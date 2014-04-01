@@ -267,6 +267,7 @@ atomExpression
 precedenceFieldExpression
     :
     atomExpression ((LSQUARE^ expression RSQUARE!) | (DOT^ identifier))*
+	| db=identifier DOT tab=atomExpression DOT col=atomExpression -> $tab ^(DOT $col)
     ;
 
 precedenceUnaryOperator
