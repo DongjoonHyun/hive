@@ -156,6 +156,12 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import com.nexr.platform.hive.udf.UDFToChar;
+import com.nexr.platform.hive.udf.GenericUDFToNumber;
+import com.nexr.platform.hive.udf.UDFSysDate;
+import com.nexr.platform.hive.udf.UDFLastDay;
+import com.nexr.platform.hive.udf.UDFDateFormat;
+import com.nexr.platform.hive.udf.GenericUDFTrunc;
 
 /**
  * FunctionRegistry.
@@ -198,6 +204,8 @@ public final class FunctionRegistry {
     registerUDF("ascii", UDFAscii.class, false);
     registerUDF("lpad", UDFLpad.class, false);
     registerUDF("rpad", UDFRpad.class, false);
+    registerUDF("to_char", UDFToChar.class, false);
+    registerGenericUDF("to_number", GenericUDFToNumber.class);
 
     registerGenericUDF("size", GenericUDFSize.class);
 
@@ -274,6 +282,10 @@ public final class FunctionRegistry {
     registerUDF("date_add", UDFDateAdd.class, false);
     registerUDF("date_sub", UDFDateSub.class, false);
     registerUDF("datediff", UDFDateDiff.class, false);
+    registerUDF("sysdate", UDFSysDate.class, false);
+    registerUDF("date_format", UDFDateFormat.class, false);
+    registerUDF("last_day", UDFLastDay.class, false);
+    registerGenericUDF("trunc", GenericUDFTrunc.class);
 
     registerUDF("get_json_object", UDFJson.class, false);
 
