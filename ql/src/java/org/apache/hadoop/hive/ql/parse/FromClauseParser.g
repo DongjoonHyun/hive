@@ -172,8 +172,9 @@ tableSample
 tableSource
 @init { gParent.msgs.push("table source"); }
 @after { gParent.msgs.pop(); }
-    : tabname=tableName (props=tableProperties)? (ts=tableSample)? (KW_AS? alias=Identifier)?
-    -> ^(TOK_TABREF $tabname $props? $ts? $alias?)
+    : tabname=tableName (props=tableProperties)? (ts=tableSample)? (KW_AS? (alias=Identifier|aliasStr=StringLiteral))?
+    -> {$alias != null}? ^(TOK_TABREF $tabname $props? $ts? $alias?)
+    -> ^(TOK_TABREF $tabname $props? $ts? $aliasStr?)
     ;
 
 tableName
@@ -208,7 +209,9 @@ subQuerySource
 @init { gParent.msgs.push("subquery source"); }
 @after { gParent.msgs.pop(); }
     :
-    LPAREN queryStatementExpression RPAREN identifier -> ^(TOK_SUBQUERY queryStatementExpression identifier)
+    LPAREN queryStatementExpression RPAREN (Identifier|name=StringLiteral)
+    -> {$name!=null}? ^(TOK_SUBQUERY queryStatementExpression Identifier[$name.text.substring(1,$name.text.length()-1)])
+    -> ^(TOK_SUBQUERY queryStatementExpression Identifier)
     ;
 
 //---------------------- Rules for parsing PTF clauses -----------------------------

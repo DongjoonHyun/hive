@@ -266,8 +266,8 @@ atomExpression
 
 precedenceFieldExpression
     :
-    atomExpression ((LSQUARE^ expression RSQUARE!) | (DOT^ identifier))*
-    | db=identifier DOT tab2=StringLiteral DOT col=identifier -> ^(DOT ^(TOK_TABLE_OR_COL Identifier[$tab2.text.substring(1,$tab2.text.length()-1)]) $col)
+    (db=identifier DOT)? tab2=StringLiteral DOT col=identifier -> ^(DOT ^(TOK_TABLE_OR_COL Identifier[$tab2.text.substring(1,$tab2.text.length()-1)]) $col)
+    | atomExpression ((LSQUARE^ expression RSQUARE!) | (DOT^ identifier))*
     ;
 
 precedenceUnaryOperator
