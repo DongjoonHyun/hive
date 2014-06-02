@@ -5824,6 +5824,10 @@ public class SemanticAnalyzer extends BaseSemanticAnalyzer {
           // ClusterBy
           order.append("+");
         }
+
+        if(cl.getChildCount() > 1)
+            cl = (ASTNode) cl.getChild(1);
+
         ExprNodeDesc exprNode = genExprNodeDesc(cl, inputRR);
         sortCols.add(exprNode);
       }
