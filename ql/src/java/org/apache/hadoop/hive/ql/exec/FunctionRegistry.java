@@ -159,6 +159,7 @@ import org.w3c.dom.NodeList;
 import com.nexr.platform.hive.udf.UDFToChar;
 import com.nexr.platform.hive.udf.GenericUDFToNumber;
 import com.nexr.platform.hive.udf.UDFSysDate;
+import com.nexr.platform.hive.udf.UDFAddMonths;
 import com.nexr.platform.hive.udf.UDFLastDay;
 import com.nexr.platform.hive.udf.UDFDateFormat;
 import com.nexr.platform.hive.udf.GenericUDFTrunc;
@@ -285,6 +286,7 @@ public final class FunctionRegistry {
     registerUDF("sysdate", UDFSysDate.class, false);
     registerUDF("date_format", UDFDateFormat.class, false);
     registerUDF("last_day", UDFLastDay.class, false);
+	registerUDF("add_month", UDFAddMonths.class, false);
     registerGenericUDF("trunc", GenericUDFTrunc.class);
 
     registerUDF("get_json_object", UDFJson.class, false);
