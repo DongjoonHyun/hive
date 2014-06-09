@@ -286,7 +286,7 @@ public final class FunctionRegistry {
     registerUDF("sysdate", UDFSysDate.class, false);
     registerUDF("date_format", UDFDateFormat.class, false);
     registerUDF("last_day", UDFLastDay.class, false);
-	registerUDF("add_month", UDFAddMonths.class, false);
+	registerUDF("add_months", UDFAddMonths.class, false);
     registerGenericUDF("trunc", GenericUDFTrunc.class);
 
     registerUDF("get_json_object", UDFJson.class, false);
